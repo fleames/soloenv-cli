@@ -13,6 +13,17 @@ linters:
     - misspell
     - revive
 
+  settings:
+    errcheck:
+      exclude-functions:
+        - (github.com/fatih/color.Color).Printf
+        - (github.com/fatih/color.Color).Fprintf
+        - (github.com/fatih/color.Color).Println
+        - (github.com/fatih/color.Color).Fprintln
+        - (github.com/fatih/color.Color).Sprint
+        - (github.com/fatih/color.Color).Sprintln
+        - (github.com/fatih/color.Color).Sprintf
+
   exclusions:
     rules:
       - path: _test\.go
