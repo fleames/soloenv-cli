@@ -14,6 +14,10 @@ linters:
     - revive
 
   settings:
+    revive:
+      rules:
+        - name: exported
+          disabled: true
     errcheck:
       exclude-functions:
         - (*github.com/fatih/color.Color).Printf

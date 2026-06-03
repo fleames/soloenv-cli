@@ -60,7 +60,7 @@ func init() {
 	upCmd.Flags().BoolVar(&flagOpen, "open", false, "open the staging URL in your browser when ready")
 }
 
-func runUp(_ *cobra.Command, args []string) error {
+func runUp(_ *cobra.Command, _ []string) error {
 	output.Banner()
 
 	dir, err := os.Getwd()

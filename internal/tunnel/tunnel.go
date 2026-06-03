@@ -123,7 +123,7 @@ func download(dest string) error {
 	if err != nil {
 		return err
 	}
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 	if resp.StatusCode != http.StatusOK {
 		return fmt.Errorf("unexpected status %s for %s", resp.Status, url)
 	}
@@ -139,7 +139,7 @@ func writeExecutable(r io.Reader, dest string) error {
 	if err != nil {
 		return err
 	}
-	defer f.Close()
+	defer func() { _ = f.Close() }()
 	if _, err := io.Copy(f, r); err != nil {
 		return err
 	}
@@ -152,7 +152,7 @@ func extractFromTarGz(r io.Reader, name, dest string) error {
 	if err != nil {
 		return err
 	}
-	defer gz.Close()
+	defer func() { _ = gz.Close() }()
 	tr := tar.NewReader(gz)
 	for {
 		hdr, err := tr.Next()

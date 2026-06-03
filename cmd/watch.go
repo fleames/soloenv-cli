@@ -23,7 +23,7 @@ func init() {
 	rootCmd.AddCommand(watchCmd)
 }
 
-func runWatch(_ *cobra.Command, args []string) error {
+func runWatch(_ *cobra.Command, _ []string) error {
 	if watchDir == "" || watchUntil == "" {
 		return nil
 	}
