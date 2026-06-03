@@ -13,7 +13,7 @@ var openCmd = &cobra.Command{
 	RunE:  runOpen,
 }
 
-func runOpen(cmd *cobra.Command, args []string) error {
+func runOpen(_ *cobra.Command, args []string) error {
 	dir, err := projectDir(flagDir)
 	if err != nil {
 		return err

@@ -12,7 +12,7 @@ var downCmd = &cobra.Command{
 	RunE:  runDown,
 }
 
-func runDown(cmd *cobra.Command, args []string) error {
+func runDown(_ *cobra.Command, args []string) error {
 	dir, err := projectDir(flagDir)
 	if err != nil {
 		return err

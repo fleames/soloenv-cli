@@ -13,7 +13,7 @@ import (
 // startUpstream returns a backend server and its port.
 func startUpstream(t *testing.T) (*httptest.Server, int) {
 	t.Helper()
-	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+	srv := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, _ *http.Request) {
 		_, _ = io.WriteString(w, "hello from upstream")
 	}))
 	t.Cleanup(srv.Close)

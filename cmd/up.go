@@ -60,7 +60,7 @@ func init() {
 	upCmd.Flags().BoolVar(&flagOpen, "open", false, "open the staging URL in your browser when ready")
 }
 
-func runUp(cmd *cobra.Command, args []string) error {
+func runUp(_ *cobra.Command, args []string) error {
 	output.Banner()
 
 	dir, err := os.Getwd()
@@ -146,7 +146,7 @@ func runUp(cmd *cobra.Command, args []string) error {
 			port = containerPort
 		}
 		if port == 0 {
-			return fmt.Errorf("could not determine port â€” add EXPOSE or pass --port")
+			return fmt.Errorf("could not determine port — add EXPOSE or pass --port")
 		}
 		if containerPort == 0 {
 			containerPort = port
@@ -268,7 +268,7 @@ func runUp(cmd *cobra.Command, args []string) error {
 			select {
 			case <-time.After(time.Until(*st.ExpiresAt)):
 				fmt.Println()
-				info("TTL reached â€” tearing down...")
+				info("TTL reached — tearing down...")
 				teardown(absDir, st, tun)
 				if localProxy != nil {
 					localProxy.Stop()

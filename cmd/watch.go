@@ -23,7 +23,7 @@ func init() {
 	rootCmd.AddCommand(watchCmd)
 }
 
-func runWatch(cmd *cobra.Command, args []string) error {
+func runWatch(_ *cobra.Command, args []string) error {
 	if watchDir == "" || watchUntil == "" {
 		return nil
 	}
@@ -40,7 +40,7 @@ func runWatch(cmd *cobra.Command, args []string) error {
 		return nil
 	}
 	if st.Expired() || time.Now().After(deadline) {
-		info("TTL reached â€” tearing down...")
+		info("TTL reached — tearing down...")
 		teardown(watchDir, st, nil)
 		success("Environment expired and was removed.")
 	}

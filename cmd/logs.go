@@ -20,7 +20,7 @@ func init() {
 	logsCmd.Flags().BoolVarP(&flagFollow, "follow", "f", true, "follow log output")
 }
 
-func runLogs(cmd *cobra.Command, args []string) error {
+func runLogs(_ *cobra.Command, args []string) error {
 	dir, err := projectDir(flagDir)
 	if err != nil {
 		return err

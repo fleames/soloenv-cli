@@ -34,7 +34,7 @@ func init() {
 	rootCmd.AddCommand(holdCmd)
 }
 
-func runHold(cmd *cobra.Command, args []string) error {
+func runHold(_ *cobra.Command, args []string) error {
 	if holdAppPort == 0 || holdPassword == "" {
 		return fmt.Errorf("hold requires --app-port and --password")
 	}
