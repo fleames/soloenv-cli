@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="SoloEnv â€” one-command ephemeral staging for solo devs" width="760" />
+<img src="assets/banner.svg" alt="SoloEnv — one-command ephemeral staging for solo devs" width="760" />
 
 ### One-command ephemeral staging for solo devs
 
@@ -15,26 +15,11 @@ No cloud account. No billing. No DevOps detour.
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Made with Go](https://img.shields.io/badge/Made%20with-Go-00ADD8.svg)](https://go.dev)
 
+<br/>
+
+<img src="assets/terminal.svg" alt="soloenv up terminal demo" width="760" />
+
 </div>
-
----
-
-```console
-$ soloenv up
-
-  â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
-  â”‚  Your staging URL is live                                 â”‚
-  â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
-
-  https://calm-river-1234.trycloudflare.com
-
-  Scan on your phone:
-  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ
-  â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ
-
-  Local app port: 8080
-  Press Ctrl+C to stop and tear everything down.
-```
 
 ---
 
@@ -56,25 +41,31 @@ $ soloenv up
 
 ## Why SoloEnv
 
-You ship features fast â€” but realistic staging is still a weekend project. Wiring hosts, secrets, tunnels, and teardown is a detour you can't afford before you have paying users. So you skip it, and **production becomes the first place a feature meets the real world.**
+You ship features fast — but realistic staging is still a weekend project. Wiring hosts, secrets, tunnels, and teardown is a detour you can't afford before you have paying users. So you skip it, and **production becomes the first place a feature meets the real world.**
 
-SoloEnv collapses that whole detour into one command. It runs the Docker app you already have, opens a secure public tunnel, and hands you a link you can send to a client, a co-founder, or your own phone. When you're done, it disappears â€” nothing left running, nothing to pay for.
+SoloEnv collapses that whole detour into one command. It runs the Docker app you already have, opens a secure public tunnel, and hands you a link you can send to a client, a co-founder, or your own phone. When you're done, it disappears — nothing left running, nothing to pay for.
 
-Built for **one-person teams**: indie hackers, freelancers, and solo founders â€” not platform teams.
+Built for **one-person teams**: indie hackers, freelancers, and solo founders — not platform teams.
 
 ## Features
 
-- **One command** â€” `soloenv up` builds, runs, and exposes your app
-- **Any Docker app** â€” works with your `compose.yaml` or `Dockerfile`, no rewrites
-- **Public URL in seconds** â€” free [Cloudflare quick tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/), no account needed
-- **Detached mode** â€” `--detach` keeps staging alive after you close the terminal
-- **Password protection** â€” `--protect` / `--password` puts HTTP basic auth in front of the link
-- **Auto teardown** â€” `--ttl 4h` expires the environment automatically
-- **Realistic env** â€” auto-loads `.env.staging` so previews mirror production config
-- **QR code + clipboard** â€” scan on mobile, URL copied for you
-- **`open` / `logs` / `status`** â€” quality-of-life commands for a live environment
-- **PR previews** â€” drop-in GitHub Action template
-- **Single static binary** â€” written in Go, runs on macOS, Linux, and Windows
+<div align="center">
+<img src="assets/features.svg" alt="SoloEnv feature overview" width="760" />
+</div>
+
+<br/>
+
+- **One command** — `soloenv up` builds, runs, and exposes your app
+- **Any Docker app** — works with your `compose.yaml` or `Dockerfile`, no rewrites
+- **Public URL in seconds** — free [Cloudflare quick tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/do-more-with-tunnels/trycloudflare/), no account needed
+- **Detached mode** — `--detach` keeps staging alive after you close the terminal
+- **Password protection** — `--protect` / `--password` puts HTTP basic auth in front of the link
+- **Auto teardown** — `--ttl 4h` expires the environment automatically
+- **Realistic env** — auto-loads `.env.staging` so previews mirror production config
+- **QR code + clipboard** — scan on mobile, URL copied for you
+- **`open` / `logs` / `status`** — quality-of-life commands for a live environment
+- **PR previews** — drop-in GitHub Action template
+- **Single static binary** — written in Go, runs on macOS, Linux, and Windows
 
 ## Install
 
@@ -108,7 +99,7 @@ From any project with a `compose.yaml` or `Dockerfile`:
 soloenv up
 ```
 
-That's it â€” you get a public URL and a QR code. Press `Ctrl+C` to tear everything down.
+That's it — you get a public URL and a QR code. Press `Ctrl+C` to tear everything down.
 
 Want it to keep running after you close the terminal, protected, and self-expiring?
 
@@ -149,8 +140,8 @@ Every command accepts `--dir <path>` to target a project folder other than the c
 | `-s, --service` | auto | Compose service to expose when several publish ports |
 | `-d, --detach` | `false` | Run in the background |
 | `--protect` | `false` | Basic auth with a generated password |
-| `--password` | â€” | Basic auth with a chosen password |
-| `--ttl` | â€” | Auto teardown duration (e.g. `2h`, `45m`) |
+| `--password` | — | Basic auth with a chosen password |
+| `--ttl` | — | Auto teardown duration (e.g. `2h`, `45m`) |
 | `--env-file` | auto | Env file for Docker |
 | `--open` | `false` | Open the URL when ready |
 | `--no-build` | `false` | Skip image build |
@@ -171,9 +162,15 @@ ttl: 4h
 
 Env files are auto-detected in this order when not set: `.env.staging`, then `.env.soloenv`.
 
-> Add `.soloenv/` to your project's `.gitignore` â€” it holds runtime state for the live environment.
+> Add `.soloenv/` to your project's `.gitignore` — it holds runtime state for the live environment.
 
 ## How it works
+
+<div align="center">
+<img src="assets/flow.svg" alt="How SoloEnv works — 4-step flow" width="760" />
+</div>
+
+<br/>
 
 ```mermaid
 flowchart TD
@@ -197,19 +194,19 @@ For a deeper dive into the internals, see [`docs/ARCHITECTURE.md`](docs/ARCHITEC
 
 ## PR previews
 
-Copy [`templates/github-preview.yml`](templates/github-preview.yml) to `.github/workflows/soloenv-preview.yml`, adjust the install step for your distribution, and every pull request gets a preview URL posted as a comment â€” with optional `--ttl` auto-expiry and teardown on close.
+Copy [`templates/github-preview.yml`](templates/github-preview.yml) to `.github/workflows/soloenv-preview.yml`, adjust the install step for your distribution, and every pull request gets a preview URL posted as a comment — with optional `--ttl` auto-expiry and teardown on close.
 
 ## Comparison
 
 | | SoloEnv | ngrok | Vercel/Netlify | PaaS preview envs |
 |---|:---:|:---:|:---:|:---:|
-| Any Docker app | âœ… | âž– (tunnel only) | âŒ (frontend-centric) | âœ… |
-| No cloud account | âœ… | âš ï¸ | âŒ | âŒ |
-| One command | âœ… | âœ… | âš ï¸ | âŒ |
-| Auto teardown | âœ… | âŒ | âœ… | âš ï¸ |
-| Password on link | âœ… | âš ï¸ (paid) | âš ï¸ | âœ… |
-| Runs your full compose stack | âœ… | âŒ | âŒ | âœ… |
-| Free | âœ… | âš ï¸ | âš ï¸ | âŒ |
+| Any Docker app | ✅ | ➖ (tunnel only) | ❌ (frontend-centric) | ✅ |
+| No cloud account | ✅ | ⚠️ | ❌ | ❌ |
+| One command | ✅ | ✅ | ⚠️ | ❌ |
+| Auto teardown | ✅ | ❌ | ✅ | ⚠️ |
+| Password on link | ✅ | ⚠️ (paid) | ⚠️ | ✅ |
+| Runs your full compose stack | ✅ | ❌ | ❌ | ✅ |
+| Free | ✅ | ⚠️ | ⚠️ | ❌ |
 
 SoloEnv is **tunnel-first**: the URL is live while the tunnel runs (foreground or detached). It is intentionally not a hosting platform.
 
@@ -222,7 +219,7 @@ SoloEnv is **tunnel-first**: the URL is live while the tunnel runs (foreground o
 ## Roadmap
 
 - [ ] Stable named subdomains (Cloudflare named tunnels)
-- [ ] Remote driver â€” laptop-off previews on a cheap VM
+- [ ] Remote driver — laptop-off previews on a cheap VM
 - [ ] Ephemeral database sidecar for compose
 - [ ] Request inspector / replay
 - [ ] Homebrew + Scoop + `winget` packages
@@ -241,4 +238,4 @@ make check   # fmt + vet + test
 
 ## License
 
-[MIT](LICENSE) Â© SoloEnv contributors
+[MIT](LICENSE) © SoloEnv contributors
