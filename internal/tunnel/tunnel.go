@@ -31,6 +31,17 @@ var blockedTunnelHosts = map[string]bool{
 	"www.trycloudflare.com": true,
 }
 
+// PickTunnelURLFromText returns the first quick-tunnel URL in text, ignoring
+// cloudflared control-plane hosts like api.trycloudflare.com.
+func PickTunnelURLFromText(text string) string {
+	for line := range strings.SplitSeq(text, "\n") {
+		if u := pickTunnelURL(line); u != "" {
+			return u
+		}
+	}
+	return ""
+}
+
 func pickTunnelURL(line string) string {
 	for _, m := range urlRe.FindAllString(line, -1) {
 		u, err := url.Parse(m)
