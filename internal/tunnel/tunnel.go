@@ -10,17 +10,41 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/url"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"regexp"
 	"runtime"
+	"strings"
 	"time"
 )
 
 const releaseBase = "https://github.com/cloudflare/cloudflared/releases/latest/download"
 
 var urlRe = regexp.MustCompile(`https://[a-z0-9-]+\.trycloudflare\.com`)
+
+// cloudflared logs its control-plane host (api.trycloudflare.com) before the
+// random quick-tunnel URL — ignore reserved subdomains.
+var blockedTunnelHosts = map[string]bool{
+	"api.trycloudflare.com": true,
+	"www.trycloudflare.com": true,
+}
+
+func pickTunnelURL(line string) string {
+	for _, m := range urlRe.FindAllString(line, -1) {
+		u, err := url.Parse(m)
+		if err != nil {
+			continue
+		}
+		host := strings.ToLower(u.Hostname())
+		if blockedTunnelHosts[host] {
+			continue
+		}
+		return m
+	}
+	return ""
+}
 
 // Tunnel is a running cloudflared process and its public URL.
 type Tunnel struct {
@@ -95,7 +119,7 @@ func StartURL(bin, targetURL string, timeout time.Duration) (*Tunnel, error) {
 		scanner := bufio.NewScanner(r)
 		scanner.Buffer(make([]byte, 0, 64*1024), 1024*1024)
 		for scanner.Scan() {
-			if m := urlRe.FindString(scanner.Text()); m != "" {
+			if m := pickTunnelURL(scanner.Text()); m != "" {
 				select {
 				case urlCh <- m:
 				default:

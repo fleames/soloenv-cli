@@ -8,10 +8,23 @@ import (
 
 func TestURLRegex(t *testing.T) {
 	line := "2026-06-03T12:00:00Z INF |  https://calm-river-1234.trycloudflare.com  |"
-	got := urlRe.FindString(line)
+	got := pickTunnelURL(line)
 	want := "https://calm-river-1234.trycloudflare.com"
 	if got != want {
-		t.Fatalf("FindString = %q, want %q", got, want)
+		t.Fatalf("pickTunnelURL = %q, want %q", got, want)
+	}
+}
+
+func TestPickTunnelURLIgnoresAPIHost(t *testing.T) {
+	line := "INF Connecting to https://api.trycloudflare.com tunnel server"
+	if got := pickTunnelURL(line); got != "" {
+		t.Fatalf("pickTunnelURL = %q, want empty for api host", got)
+	}
+	mixed := "connect https://api.trycloudflare.com then https://calm-river-1234.trycloudflare.com ready"
+	got := pickTunnelURL(mixed)
+	want := "https://calm-river-1234.trycloudflare.com"
+	if got != want {
+		t.Fatalf("pickTunnelURL = %q, want %q", got, want)
 	}
 }
 

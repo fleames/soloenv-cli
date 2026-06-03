@@ -7,10 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Planned
-- Stable named subdomains (Cloudflare named tunnels)
-- Remote driver for laptop-off previews
-- Ephemeral database sidecar for compose
+## [0.2.1] - 2026-06-03
+
+### Fixed
+- Ignore `api.trycloudflare.com` when parsing cloudflared output so quick tunnels get the real random URL, not the control-plane host.
 
 ## [0.2.0] - 2026-06-03
 
@@ -38,6 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Optional `soloenv.yml` configuration.
 - Per-project `.soloenv/state.json` runtime state.
 
-[Unreleased]: https://github.com/fleames/soloenv-cli/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/fleames/soloenv-cli/compare/v0.2.1...HEAD
+[0.2.1]: https://github.com/fleames/soloenv-cli/compare/v0.2.0...v0.2.1
 [0.2.0]: https://github.com/fleames/soloenv-cli/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/fleames/soloenv-cli/releases/tag/v0.1.0
