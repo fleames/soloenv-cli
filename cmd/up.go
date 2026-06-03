@@ -205,18 +205,42 @@ func runUp(_ *cobra.Command, _ []string) error {
 		}
 		return err
 	}
-	tun, err := tunnel.Start(bin, tunnelPort, tunnelTimeout)
-	if err != nil {
-		teardown(absDir, st, nil)
-		if localProxy != nil {
-			localProxy.Stop()
-		}
-		return err
-	}
-
-	st.URL = tun.URL
-	st.TunnelPID = tun.PID()
+	var tun *tunnel.Tunnel
+	var publicURL string
 	st.TunnelPort = tunnelPort
+
+	if flagDetach {
+		if err := os.MkdirAll(state.Dir(absDir), 0o755); err != nil {
+			teardown(absDir, st, nil)
+			if localProxy != nil {
+				localProxy.Stop()
+			}
+			return fmt.Errorf("failed to create state dir: %w", err)
+		}
+		logPath := filepath.Join(state.Dir(absDir), "cloudflared.log")
+		var pid int
+		publicURL, pid, err = startTunnelDetached(bin, tunnelPort, logPath, tunnelTimeout)
+		if err != nil {
+			teardown(absDir, st, nil)
+			if localProxy != nil {
+				localProxy.Stop()
+			}
+			return fmt.Errorf("failed to start detached tunnel: %w", err)
+		}
+		st.TunnelPID = pid
+	} else {
+		tun, err = tunnel.Start(bin, tunnelPort, tunnelTimeout)
+		if err != nil {
+			teardown(absDir, st, nil)
+			if localProxy != nil {
+				localProxy.Stop()
+			}
+			return err
+		}
+		publicURL = tun.URL
+		st.TunnelPID = tun.PID()
+	}
+	st.URL = publicURL
 
 	if ttl > 0 {
 		exp := time.Now().Add(ttl)
@@ -241,7 +265,7 @@ func runUp(_ *cobra.Command, _ []string) error {
 	}
 
 	output.PrintReady(output.ReadyOpts{
-		URL:       tun.URL,
+		URL:       publicURL,
 		AppPort:   port,
 		Detached:  flagDetach,
 		Protected: authPass != "",
@@ -252,7 +276,7 @@ func runUp(_ *cobra.Command, _ []string) error {
 	})
 
 	if flagOpen {
-		_ = openURL(tun.URL)
+		_ = openURL(publicURL)
 	}
 
 	if flagDetach {
