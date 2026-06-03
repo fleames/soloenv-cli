@@ -1,0 +1,6 @@
+# Optional — the single published port (8080) is auto-detected, so this file is
+# only here to show the format. Uncomment to pin behavior.
+
+# port: 8080
+# build: false
+# ttl: 1h

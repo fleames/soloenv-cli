@@ -1,0 +1,19 @@
+# Built binaries
+/soloenv
+/soloenv.exe
+*.exe
+*.exe~
+/dist/
+
+# Go
+*.test
+*.out
+coverage.*
+
+# Per-project runtime state (also ignore this in your app repos)
+.soloenv/
+
+# Editor / OS
+.idea/
+.vscode/
+.DS_Store

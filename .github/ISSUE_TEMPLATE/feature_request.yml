@@ -1,0 +1,32 @@
+name: 💡 Feature request
+description: Suggest an idea for SoloEnv
+title: "feat: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem are you trying to solve?
+      description: Describe the pain, not just the solution.
+      placeholder: As a solo dev, I want ... so that ...
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: How might SoloEnv address this? Sketch the command or flag if you can.
+    validations:
+      required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Fit
+      options:
+        - label: This keeps SoloEnv simple and solo-dev focused (not a platform-team tool)

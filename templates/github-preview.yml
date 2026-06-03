@@ -1,0 +1,56 @@
+# SoloEnv PR preview â€” copy to .github/workflows/soloenv-preview.yml
+# Requires: self-hosted runner with Docker, or run on ubuntu-latest if Docker is available.
+#
+# Posts a preview URL comment when a PR is opened/updated. Customize the soloenv
+# install step for your distribution (release binary, go install, etc.).
+
+name: SoloEnv preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, closed]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  preview:
+    if: github.event.action != 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install SoloEnv
+        run: |
+          go install github.com/fleames/soloenv-cli@latest
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+
+      - name: Start preview
+        id: up
+        run: |
+          soloenv up --detach --ttl 6h --no-build 2>&1 | tee /tmp/soloenv-up.log
+          URL=$(grep -oE 'https://[a-z0-9-]+\.trycloudflare\.com' /tmp/soloenv-up.log | head -1)
+          echo "url=$URL" >> $GITHUB_OUTPUT
+
+      - name: Comment on PR
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            ## SoloEnv preview
+
+            **URL:** ${{ steps.up.outputs.url }}
+
+            Ephemeral staging â€” expires in 6h or when the PR closes.
+          comment-identifier: soloenv-preview
+
+  teardown:
+    if: github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install SoloEnv
+        run: go install github.com/fleames/soloenv-cli@latest
+      - name: Tear down
+        run: soloenv down || true

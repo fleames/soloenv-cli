@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1280" height="360" viewBox="0 0 1280 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SoloEnv - one-command ephemeral staging for solo devs">
+  <defs>
+    <linearGradient id="accent" x1="0" y1="0" x2="1280" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7fd962"/>
+      <stop offset="1" stop-color="#3fb6e0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.8" cy="0.1" r="0.9">
+      <stop stop-color="#7fd962" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#7fd962" stop-opacity="0"/>
+    </radialGradient>
+    <style>
+      .wm { font: 800 76px "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+      .tag { font: 400 26px "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+      .mono { font: 600 24px "JetBrains Mono", "Cascadia Code", Consolas, monospace; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="360" rx="28" fill="#0b0d13"/>
+  <rect width="1280" height="360" rx="28" fill="url(#glow)"/>
+  <rect x="1" y="1" width="1278" height="358" rx="27" fill="none" stroke="#252b3d" stroke-width="2"/>
+
+  <g transform="translate(80 96)">
+    <rect width="96" height="96" rx="22" fill="#10131c" stroke="#252b3d" stroke-width="2"/>
+    <path d="M30 36 L44 48 L30 60" stroke="url(#accent)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <line x1="50" y1="62" x2="68" y2="62" stroke="url(#accent)" stroke-width="6" stroke-linecap="round"/>
+  </g>
+
+  <text x="208" y="150" class="wm" fill="#eef1f8">Solo<tspan fill="url(#accent)">Env</tspan></text>
+  <text x="210" y="196" class="tag" fill="#9aa4ba">One-command ephemeral staging for solo devs</text>
+
+  <g transform="translate(210 244)">
+    <rect x="-12" y="-6" width="980" height="64" rx="14" fill="#0a0c12" stroke="#252b3d" stroke-width="1.5"/>
+    <text x="16" y="34" class="mono"><tspan fill="#7fd962">$</tspan><tspan fill="#eef1f8" dx="14">soloenv up</tspan><tspan fill="#6b768c" dx="22">&#8594;</tspan><tspan fill="#3fb6e0" dx="22">https://calm-river-1234.trycloudflare.com</tspan></text>
+  </g>
+</svg>

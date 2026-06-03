@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SoloEnv static-site example</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+        background: #0b0d13;
+        color: #eef1f8;
+      }
+      .card {
+        text-align: center;
+        padding: 2rem 2.5rem;
+        border: 1px solid #252b3d;
+        border-radius: 16px;
+        background: #141826;
+      }
+      h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.6rem;
+      }
+      .accent {
+        color: #7fd962;
+      }
+      code {
+        background: rgba(127, 217, 98, 0.12);
+        color: #7fd962;
+        padding: 0.15rem 0.45rem;
+        border-radius: 6px;
+        font-family: ui-monospace, monospace;
+      }
+      p {
+        color: #9aa4ba;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>It works — served by <span class="accent">SoloEnv</span></h1>
+      <p>This page is running in Docker and exposed via a public tunnel.</p>
+      <p>Started with <code>soloenv up</code>. Tear down with <code>soloenv down</code>.</p>
+    </div>
+  </body>
+</html>

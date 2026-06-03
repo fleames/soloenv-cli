@@ -1,0 +1,60 @@
+name: 🐛 Bug report
+description: Something isn't working as expected
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to file a bug! Please fill out the details below.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug and what you expected instead.
+      placeholder: When I run `soloenv up` ...
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Steps to reproduce
+      description: Include a minimal `compose.yaml` or `Dockerfile` if possible.
+      placeholder: |
+        1. cd into a project with this compose.yaml: ...
+        2. Run `soloenv up --protect`
+        3. See error
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: SoloEnv version
+      description: Output of `soloenv --version`
+      placeholder: soloenv version 0.2.0
+    validations:
+      required: true
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: docker
+    attributes:
+      label: Docker version
+      description: Output of `docker version --format '{{.Server.Version}}'`
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant output / logs
+      render: shell
+    validations:
+      required: false

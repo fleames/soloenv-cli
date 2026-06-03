@@ -1,0 +1,15 @@
+# SoloEnv project config (optional). Copy to soloenv.yml in your project root.
+
+# port: 8080
+# service: web
+# build: true
+
+# Staging environment variables (loaded into docker compose / run)
+# env_file: .env.staging
+
+# Protect the public URL with HTTP basic auth (user defaults to "solo")
+# password: my-secret-preview
+# auth_user: reviewer
+
+# Auto teardown after duration (works with --detach via background watcher)
+# ttl: 4h
