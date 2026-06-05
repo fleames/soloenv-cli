@@ -192,6 +192,8 @@ When you ask for protection, SoloEnv starts a tiny local reverse proxy that enfo
 
 For a deeper dive into the internals, see [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md).
 
+[![Launchpadly Startup Directory](https://launchpadly.co/embed/badges/listing.svg?variant=listed-on)](https://launchpadly.co/)
+
 ## PR previews
 
 Copy [`templates/github-preview.yml`](templates/github-preview.yml) to `.github/workflows/soloenv-preview.yml`, adjust the install step for your distribution, and every pull request gets a preview URL posted as a comment — with optional `--ttl` auto-expiry and teardown on close.
