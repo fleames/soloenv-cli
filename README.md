@@ -49,9 +49,9 @@ Built for **one-person teams**: indie hackers, freelancers, and solo founders â€
 
 ## Features
 
-<div align="center">
-<img src="assets/features.svg" alt="SoloEnv feature overview" width="760" />
-</div>
+<a href="https://launchpadly.co/startup/soloenv-cli" target="_blank" rel="noopener noreferrer" data-launchpadly-badge="soloenv-cli" data-launchpadly-badge-variant="listed-on">
+  <img src="https://launchpadly.co/embed/badges/startup/soloenv-cli.svg?variant=listed-on" alt="Launchpadly Startup Directory" width="260" height="48" style="display:block;border:0;" />
+</a>
 
 <br/>
 
