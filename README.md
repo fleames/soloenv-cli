@@ -47,6 +47,7 @@ SoloEnv collapses that whole detour into one command. It runs the Docker app you
 
 Built for **one-person teams**: indie hackers, freelancers, and solo founders — not platform teams.
 
+<img src="https://komarev.com/ghpvc/?username=fleames&style=for-the-badge&color=6366f1" alt="views" />
 ## Features
 
 <a href="https://launchpadly.co/startup/soloenv-cli" target="_blank" rel="noopener noreferrer" data-launchpadly-badge="soloenv-cli" data-launchpadly-badge-variant="listed-on">
